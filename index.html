@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body {
-            background: #080c14; /* Daha tünd və premium fon */
+            background: #080c14;
             font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
+            color: white;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.02);
@@ -23,63 +24,59 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 40px;
             width: 100%;
-            max-width: 380px;
-            padding: 40px 24px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            max-width: 370px;
+            padding: 40px 20px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            text-align: center;
         }
-        .logo-container {
-            position: relative;
-            margin-bottom: 40px;
+        .logo-box {
+            mix-blend-mode: lighten; /* Ağ fonu tünd fonda gizlədir */
+            margin-bottom: 35px;
         }
-        .logo-glow {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, transparent 70%);
-            z-index: 0;
+        .logo-box img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin: 0 auto;
         }
         .btn-action {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 18px;
-            transition: all 0.3s ease;
+            padding: 16px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
+            transition: all 0.3s ease;
         }
         .btn-action:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
         .btn-full {
-            width: 100%;
+            grid-column: span 2;
             flex-direction: row;
             justify-content: center;
             gap: 12px;
-            margin-top: 12px;
+            margin-top: 5px;
         }
         .label {
             font-size: 10px;
             font-weight: 700;
-            text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
-    <div class="glass-card text-center">
+    <div class="glass-card">
         
-        <div class="logo-container">
-            <div class="logo-glow"></div>
-            <img src="logo.png" alt="ZEOSK" class="relative w-64 mx-auto object-contain">
+        <div class="logo-box">
+            <img src="logo.png" alt="ZEOSK">
         </div>
 
         <div class="grid grid-cols-2 gap-3">
@@ -87,27 +84,30 @@
                 <i class="fa-solid fa-phone text-sky-400 text-xl"></i>
                 <span class="label">Zəng et</span>
             </a>
+
             <a href="https://wa.me/994709060986" class="btn-action">
                 <i class="fa-brands fa-whatsapp text-green-400 text-xl"></i>
                 <span class="label">WhatsApp</span>
             </a>
+
             <a href="https://instagram.com/_zeosk_" class="btn-action">
                 <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
                 <span class="label">Instagram</span>
             </a>
+
             <a href="https://tiktok.com/@_zeosk_" class="btn-action">
                 <i class="fa-brands fa-tiktok text-white text-xl"></i>
                 <span class="label">TikTok</span>
             </a>
+
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn-action btn-full">
+                <i class="fa-solid fa-envelope text-red-400 text-xl"></i>
+                <span class="label">Email Göndər</span>
+            </a>
         </div>
 
-        <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn-action btn-full">
-            <i class="fa-solid fa-envelope text-red-400"></i>
-            <span class="label">Email Göndər</span>
-        </a>
-
-        <div class="mt-12 opacity-20">
-            <p style="font-size: 8px; letter-spacing: 3px; font-weight: bold;">ZEOSK SOFTWARE SOLUTIONS</p>
+        <div class="mt-12 opacity-10">
+            <p style="font-size: 8px; letter-spacing: 4px; font-weight: bold;">ZEOSK INTEGRATED SYSTEMS</p>
         </div>
     </div>
 
