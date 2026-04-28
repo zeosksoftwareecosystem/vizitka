@@ -16,7 +16,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.4);
@@ -25,20 +25,33 @@
             border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 50px;
             width: 100%;
-            max-width: 380px;
-            padding: 45px 24px;
+            max-width: 420px; /* Kartı bir az genişləndirdik ki loqo sığsın */
+            padding: 40px 20px;
             box-shadow: 0 30px 60px rgba(0,0,0,0.05);
-            text-align: center; /* Hər şeyi mərkəzləyir */
+            text-align: center;
+        }
+        .logo-container {
+            width: 110%; /* Loqonu kartdan bir az daha geniş çıxmağa qoyuruq */
+            margin-left: -5%; /* Mərkəzi qorumaq üçün */
+            margin-bottom: 30px;
+        }
+        .logo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            mix-blend-mode: multiply;
+            /* Kənarların itməməsi üçün obyektin sığma növü */
+            object-fit: contain; 
         }
         .action-btn {
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 24px;
-            padding: 22px;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             color: #1e293b;
         }
@@ -59,66 +72,36 @@
             color: white;
             border: none;
         }
-        .btn-blue:hover {
-            background: #0062c4;
-            color: white;
-        }
-        .logo-img {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            display: block;
-            mix-blend-mode: multiply;
-        }
-        /* Arxa fon bəzəyi */
-        .bg-shape {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.6;
-            filter: blur(80px);
-            animation: float 15s infinite alternate;
-        }
-        @keyframes float {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(30px, 30px); }
-        }
     </style>
 </head>
 <body>
 
-    <div class="bg-shape" style="width: 400px; height: 400px; top: -150px; left: -150px;"></div>
-    <div class="bg-shape" style="width: 300px; height: 300px; bottom: -100px; right: -100px; animation-delay: 3s;"></div>
-
     <div class="glass-card animate__animated animate__zoomIn">
         
-        <div class="mb-10 animate__animated animate__fadeInDown animate__delay-1s">
+        <div class="logo-container animate__animated animate__fadeInDown animate__delay-1s">
             <img src="logo.png" alt="ZEOSK" class="logo-img">
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-            
             <a href="tel:+994709060986" class="action-btn">
-                <i class="fa-solid fa-phone text-blue-600 text-2xl"></i>
+                <i class="fa-solid fa-phone text-blue-600 text-xl"></i>
                 <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Zəng et</span>
             </a>
 
             <a href="https://wa.me/994709060986" class="action-btn">
-                <i class="fa-brands fa-whatsapp text-green-600 text-2xl"></i>
+                <i class="fa-brands fa-whatsapp text-green-600 text-xl"></i>
                 <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">WhatsApp</span>
             </a>
 
             <a href="https://instagram.com/_zeosk_" class="action-btn btn-full">
-                <i class="fa-brands fa-instagram text-pink-600 text-2xl"></i>
+                <i class="fa-brands fa-instagram text-pink-600 text-xl"></i>
                 <span class="text-[11px] font-bold uppercase tracking-[0.2em]">Instagram</span>
             </a>
 
             <a href="mailto:zeosksoftwareecosystem@gmail.com" class="action-btn btn-full btn-blue py-5">
-                <i class="fa-solid fa-envelope text-xl"></i>
+                <i class="fa-solid fa-envelope text-lg"></i>
                 <span class="text-[11px] font-bold uppercase tracking-[0.2em]">Email Göndər</span>
             </a>
-
         </div>
 
         <div class="mt-12 flex justify-center w-full opacity-20">
