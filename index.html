@@ -3,103 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZEOSK Digital Card</title>
+    <title>ZEOSK | Digital Card</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         body {
-            background: #020617;
-            overflow: hidden;
+            /* Fonu tam ağ edirik ki loqo ilə birləşsin */
+            background-color: #ffffff;
             font-family: 'Inter', sans-serif;
+            color: #1d1d1f;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
         }
-        /* Arxa fon animasiyası */
-        .blob {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, #0ea5e9 0%, #6366f1 100%);
-            filter: blur(140px);
-            border-radius: 50%;
-            z-index: -1;
-            opacity: 0.2;
-            animation: move 20s infinite alternate;
+        .main-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 40px 24px;
+            text-align: center;
         }
-        @keyframes move {
-            from { transform: translate(-10%, -10%); }
-            to { transform: translate(20%, 20%); }
+        .logo-container {
+            margin-bottom: 30px;
         }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.01);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.9);
-            position: relative;
-            z-index: 10;
-            margin-top: 60px; /* Loqonun yuxarıdan asılması üçün yer */
+        .logo-img {
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            margin: 0 auto;
+            /* Loqonu mərkəzə qoyuruq */
+            display: block;
         }
-        /* LOQO ÜÇÜN XÜSUSİ TƏNZİMLƏMƏ */
-        .logo-floating {
-            position: absolute;
-            top: -100px; /* Loqonu bölmənin içindən çıxarıb yuxarı asır */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 320px;
-            z-index: 20;
-            /* Bu iki sətir ağ fonu 99% yox edir */
-            mix-blend-mode: lighten; 
-            filter: contrast(120%) brightness(110%);
+        .action-btn {
+            background: #f5f5f7;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: #1d1d1f;
+            border: 1px solid transparent;
         }
-        .btn-glass {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .action-btn:hover {
+            background: #e8e8ed;
+            transform: scale(1.02);
         }
-        .btn-glass:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.2);
+        .btn-full {
+            grid-column: span 2;
+            flex-direction: row;
+            justify-content: center;
+            background: #0071e3; /* Apple Blue */
+            color: white;
+        }
+        .btn-full:hover {
+            background: #0077ed;
+        }
+        .label {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6 text-white">
+<body>
 
-    <div class="blob"></div>
-
-    <div class="glass-card max-w-[380px] w-full rounded-[4rem] p-10 pt-24 text-center animate__animated animate__fadeInUp">
+    <div class="main-card">
         
-        <img src="logo.png" alt="ZEOSK" class="logo-floating animate__animated animate__fadeInDown">
+        <div class="logo-container">
+            <img src="logo.png" alt="ZEOSK Ecosystem" class="logo-img">
+        </div>
 
-        <div class="space-y-4">
-            <div class="mb-6">
-                <h2 class="text-xs tracking-[0.4em] font-black opacity-30 uppercase">Software Ecosystem</h2>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <a href="tel:+994709060986" class="btn-glass py-5 rounded-3xl flex flex-col items-center gap-2">
-                    <i class="fa-solid fa-phone text-cyan-400"></i>
-                    <span class="text-[9px] font-bold uppercase tracking-widest">Zəng et</span>
-                </a>
-                <a href="https://wa.me/994709060986" class="btn-glass py-5 rounded-3xl flex flex-col items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-                    <span class="text-[9px] font-bold uppercase tracking-widest">WhatsApp</span>
-                </a>
-            </div>
-
-            <a href="https://instagram.com/_zeosk_" class="btn-glass w-full py-5 rounded-3xl flex items-center justify-center gap-4">
-                <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Instagram</span>
+        <div class="grid grid-cols-2 gap-4">
+            <a href="tel:+994709060986" class="action-btn">
+                <i class="fa-solid fa-phone text-blue-500 text-xl"></i>
+                <span class="label">Zəng et</span>
             </a>
 
-            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn-glass w-full py-5 rounded-3xl flex items-center justify-center gap-4">
-                <i class="fa-solid fa-envelope text-sky-400 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Email Göndər</span>
+            <a href="https://wa.me/994709060986" class="action-btn">
+                <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                <span class="label">WhatsApp</span>
+            </a>
+
+            <a href="https://instagram.com/_zeosk_" class="action-btn">
+                <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
+                <span class="label">Instagram</span>
+            </a>
+
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="action-btn btn-full">
+                <i class="fa-solid fa-envelope text-xl"></i>
+                <span class="label">Email Göndər</span>
             </a>
         </div>
 
-        <div class="mt-12 opacity-5">
-            <p class="text-[7px] font-mono tracking-[0.6em]">ZEOSK INTEGRATED SOLUTIONS</p>
+        <div class="mt-16 opacity-30">
+            <p style="font-size: 9px; letter-spacing: 3px; font-weight: bold;">ZEOSK SOFTWARE ECOSYSTEM</p>
         </div>
     </div>
 
