@@ -8,107 +8,127 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
         body {
-            background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             font-family: 'Inter', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden;
         }
+
         .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: 50px;
-            width: 100%;
-            max-width: 420px; /* Kartı bir az genişləndirdik ki loqo sığsın */
-            padding: 40px 20px;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            border-radius: 40px;
+            width: 90%;
+            max-width: 380px;
+            padding: 50px 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
             text-align: center;
         }
-        .logo-container {
-            width: 110%; /* Loqonu kartdan bir az daha geniş çıxmağa qoyuruq */
-            margin-left: -5%; /* Mərkəzi qorumaq üçün */
-            margin-bottom: 30px;
+
+        /* Yeni Yazılı Loqo Stili */
+        .brand-area {
+            margin-bottom: 40px;
         }
-        .logo-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            mix-blend-mode: multiply;
-            /* Kənarların itməməsi üçün obyektin sığma növü */
-            object-fit: contain; 
+        .brand-name {
+            font-size: 42px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: #0f172a;
+            line-height: 1;
+            margin-bottom: 8px;
         }
+        .brand-sub {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #64748b;
+            text-transform: uppercase;
+        }
+
         .action-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.9);
-            border-radius: 24px;
+            background: #ffffff;
+            border-radius: 20px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            color: #1e293b;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
         }
         .action-btn:hover {
-            background: #ffffff;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
             border-color: #3b82f6;
         }
         .btn-full {
             grid-column: span 2;
             flex-direction: row;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
         }
-        .btn-blue {
+        .btn-primary {
             background: #0071e3;
             color: white;
             border: none;
+        }
+        .btn-primary:hover {
+            background: #0062c4;
+        }
+
+        .footer-text {
+            margin-top: 50px;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #94a3b8;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="glass-card animate__animated animate__zoomIn">
+    <div class="glass-card animate__animated animate__fadeInUp">
         
-        <div class="logo-container animate__animated animate__fadeInDown animate__delay-1s">
-            <img src="logo.png" alt="ZEOSK" class="logo-img">
+        <div class="brand-area">
+            <h1 class="brand-name">ZEOSK</h1>
+            <p class="brand-sub">SOFTWARE ECOSYSTEM</p>
         </div>
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-2 gap-3">
+            
             <a href="tel:+994709060986" class="action-btn">
                 <i class="fa-solid fa-phone text-blue-600 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Zəng et</span>
+                <span class="text-[9px] font-bold uppercase opacity-50">Zəng et</span>
             </a>
 
             <a href="https://wa.me/994709060986" class="action-btn">
-                <i class="fa-brands fa-whatsapp text-green-600 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">WhatsApp</span>
+                <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
+                <span class="text-[9px] font-bold uppercase opacity-50">WhatsApp</span>
             </a>
 
             <a href="https://instagram.com/_zeosk_" class="action-btn btn-full">
-                <i class="fa-brands fa-instagram text-pink-600 text-xl"></i>
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em]">Instagram</span>
+                <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Instagram</span>
             </a>
 
-            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="action-btn btn-full btn-blue py-5">
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="action-btn btn-full btn-primary">
                 <i class="fa-solid fa-envelope text-lg"></i>
-                <span class="text-[11px] font-bold uppercase tracking-[0.2em]">Email Göndər</span>
+                <span class="text-[10px] font-bold uppercase tracking-widest">Email Göndər</span>
             </a>
+
         </div>
 
-        <div class="mt-12 flex justify-center w-full opacity-20">
-            <p class="text-[8px] font-black uppercase tracking-[0.5em] text-center w-full">
-                DIGITAL BUSINESS CARD
-            </p>
-        </div>
+        <p class="footer-text">DIGITAL BUSINESS CARD</p>
     </div>
 
 </body>
