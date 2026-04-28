@@ -6,102 +6,124 @@
     <title>ZEOSK | Digital Card</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         body {
-            /* Fonu tam ağ edirik ki loqo ilə birləşsin */
-            background-color: #ffffff;
+            /* Fonu çox açıq boz edirik ki, ağ loqo ilə boğulmasın, amma loqo fonu da itkin düşsün */
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             font-family: 'Inter', sans-serif;
-            color: #1d1d1f;
-            margin: 0;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            margin: 0;
         }
-        .main-card {
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
             width: 100%;
-            max-width: 400px;
+            max-width: 380px;
             padding: 40px 24px;
             text-align: center;
+            position: relative;
         }
-        .logo-container {
-            margin-bottom: 30px;
-        }
-        .logo-img {
-            width: 100%;
-            max-width: 320px;
-            height: auto;
-            margin: 0 auto;
-            /* Loqonu mərkəzə qoyuruq */
-            display: block;
-        }
-        .action-btn {
-            background: #f5f5f7;
-            border-radius: 18px;
+        .btn-action {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: #1d1d1f;
-            border: 1px solid transparent;
+            gap: 8px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #1e293b;
         }
-        .action-btn:hover {
-            background: #e8e8ed;
-            transform: scale(1.02);
+        .btn-action:hover {
+            background: #ffffff;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: #3b82f6;
         }
-        .btn-full {
+        .btn-email {
             grid-column: span 2;
             flex-direction: row;
             justify-content: center;
-            background: #0071e3; /* Apple Blue */
+            gap: 12px;
+            background: #0071e3;
+            color: white;
+            border: none;
+        }
+        .btn-email:hover {
+            background: #0062c4;
             color: white;
         }
-        .btn-full:hover {
-            background: #0077ed;
+        .logo-img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+            /* Loqonu ağ fonla birləşdirir */
+            mix-blend-mode: multiply; 
         }
-        .label {
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        /* Arxa fonda hərəkət edən dekorativ dairələr */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            opacity: 0.5;
+            z-index: -1;
+            animation: float 10s infinite alternate;
+        }
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(30px, 30px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="main-card">
+    <div class="circle" style="width: 300px; height: 300px; top: -100px; left: -100px;"></div>
+    <div class="circle" style="width: 200px; height: 200px; bottom: -50px; right: -50px; animation-delay: 2s;"></div>
+
+    <div class="glass-card animate__animated animate__zoomIn">
         
-        <div class="logo-container">
-            <img src="logo.png" alt="ZEOSK Ecosystem" class="logo-img">
+        <div class="mb-8 animate__animated animate__fadeInDown animate__delay-1s">
+            <img src="logo.png" alt="ZEOSK" class="logo-img">
+            <div class="mt-4">
+                <h2 class="text-[10px] font-black tracking-[0.4em] text-slate-400 uppercase">Software Ecosystem</h2>
+            </div>
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-            <a href="tel:+994709060986" class="action-btn">
+            <a href="tel:+994709060986" class="btn-action">
                 <i class="fa-solid fa-phone text-blue-500 text-xl"></i>
-                <span class="label">Zəng et</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Zəng et</span>
             </a>
-
-            <a href="https://wa.me/994709060986" class="action-btn">
+            <a href="https://wa.me/994709060986" class="btn-action">
                 <i class="fa-brands fa-whatsapp text-green-500 text-xl"></i>
-                <span class="label">WhatsApp</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">WhatsApp</span>
             </a>
-
-            <a href="https://instagram.com/_zeosk_" class="action-btn">
+            
+            <a href="https://instagram.com/_zeosk_" class="btn-action w-full col-span-2 flex-row justify-center gap-4">
                 <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
-                <span class="label">Instagram</span>
+                <span class="text-[9px] font-bold uppercase tracking-widest">Instagram</span>
             </a>
 
-            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="action-btn btn-full">
-                <i class="fa-solid fa-envelope text-xl"></i>
-                <span class="label">Email Göndər</span>
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn-action btn-email w-full py-5">
+                <i class="fa-solid fa-paper-plane text-white text-lg"></i>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Email Göndər</span>
             </a>
         </div>
 
-        <div class="mt-16 opacity-30">
-            <p style="font-size: 9px; letter-spacing: 3px; font-weight: bold;">ZEOSK SOFTWARE ECOSYSTEM</p>
+        <div class="mt-12 opacity-30">
+            <p style="font-size: 8px; font-weight: 800; letter-spacing: 2px;">ZEOSK INTEGRATED SYSTEMS</p>
         </div>
     </div>
 
