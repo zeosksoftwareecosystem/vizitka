@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEOSK Digital Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {
+            background: #0f172a;
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.02);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.4;
+            animation: move 15s infinite alternate;
+        }
+        @keyframes move {
+            from { transform: translate(-20%, -20%); }
+            to { transform: translate(30%, 30%); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-6 text-white">
+
+    <div class="blob"></div>
+
+    <div class="glass-card max-w-sm w-full rounded-[3rem] p-8 text-center animate__animated animate__fadeInUp">
+        
+        <div class="mb-10 animate__animated animate__zoomIn animate__delay-1s">
+            <div class="relative inline-block group">
+                <div class="absolute -inset-2 bg-cyan-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                <img src="logo.png" alt="ZEOSK Logo" class="relative w-56 h-56 object-contain mx-auto">
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-3">
+                <a href="tel:+994709060986" class="btn-glass py-4 rounded-2xl flex flex-col items-center gap-2">
+                    <i class="fa-solid fa-phone text-cyan-400"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest">Zəng et</span>
+                </a>
+                <a href="https://wa.me/994709060986" class="btn-glass py-4 rounded-2xl flex flex-col items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-green-400"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest">WhatsApp</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+                <a href="https://instagram.com/_zeosk_" class="btn-glass py-4 rounded-2xl flex flex-col items-center gap-2">
+                    <i class="fa-brands fa-instagram text-pink-500"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest">Instagram</span>
+                </a>
+                <a href="https://tiktok.com/@_zeosk_" class="btn-glass py-4 rounded-2xl flex flex-col items-center gap-2">
+                    <i class="fa-brands fa-tiktok text-white"></i>
+                    <span class="text-[9px] font-bold uppercase tracking-widest">TikTok</span>
+                </a>
+            </div>
+
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn-glass w-full py-5 rounded-2xl flex items-center justify-center gap-3">
+                <i class="fa-solid fa-envelope text-red-400"></i>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em]">Email Göndər</span>
+            </a>
+        </div>
+
+        <div class="mt-12 opacity-20">
+            <p class="text-[8px] font-mono tracking-[0.3em]">ZEOSK CLOUD TECHNOLOGY</p>
+        </div>
+    </div>
+
+</body>
+</html>
