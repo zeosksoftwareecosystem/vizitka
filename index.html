@@ -4,142 +4,280 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZEOSK | Premium Card</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,900;1,900&display=swap');
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0a0a0f;
+            --card-bg: #111118;
+            --card-border: rgba(255,255,255,0.07);
+            --accent-1: #7c3aed;   /* vivid violet */
+            --accent-2: #06b6d4;   /* cyan */
+            --accent-3: #f59e0b;   /* amber */
+            --text-primary: #f8fafc;
+            --text-muted: rgba(248,250,252,0.35);
+            --btn-bg: rgba(255,255,255,0.05);
+            --btn-border: rgba(255,255,255,0.08);
+        }
 
         body {
-            background: #fdfdfd;
-            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            font-family: 'DM Sans', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
-            margin: 0;
+            overflow: hidden;
         }
 
-        .premium-card {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid #ffffff;
-            border-radius: 50px;
+        /* Ambient glow background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(124,58,237,0.18) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            right: 20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(6,182,212,0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card {
+            position: relative;
+            z-index: 1;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 36px;
             width: 92%;
-            max-width: 380px;
-            padding: 60px 30px;
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08);
+            max-width: 360px;
+            padding: 52px 28px 44px;
             text-align: center;
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.03),
+                0 60px 120px -30px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.06);
+            animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
-        /* PREMIUM TİPOQRAFİYA */
-        .brand-container {
-            margin-bottom: 50px;
-            perspective: 1000px;
+        @keyframes cardIn {
+            from { opacity: 0; transform: translateY(30px) scale(0.96); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Top accent line */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-2), transparent);
+            border-radius: 0 0 4px 4px;
+        }
+
+        /* BRAND */
+        .brand {
+            margin-bottom: 48px;
         }
 
         .brand-name {
-            font-size: 56px;
+            font-family: 'Syne', sans-serif;
+            font-size: 58px;
             font-weight: 900;
-            letter-spacing: -4px; /* Hərfləri bir-birinə keçiririk - premium look */
-            line-height: 0.8;
-            background: linear-gradient(180deg, #0f172a 0%, #334155 100%);
+            letter-spacing: -5px;
+            line-height: 0.85;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            background-clip: text;
+            margin-bottom: 14px;
+            filter: drop-shadow(0 0 20px rgba(124,58,237,0.4));
         }
 
         .brand-sub {
-            font-size: 8.5px;
-            font-weight: 700;
-            letter-spacing: 7px; /* Çox geniş ara məsafəsi - Apple style */
-            color: #94a3b8;
+            font-size: 8px;
+            font-weight: 500;
+            letter-spacing: 5.5px;
+            color: var(--text-muted);
             text-transform: uppercase;
-            padding-left: 7px;
+            padding-left: 5.5px;
         }
 
-        /* DÜYMƏLƏR */
-        .grid-layout {
+        /* BUTTONS */
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .glass-btn {
-            background: #ffffff;
-            border: 1px solid #f1f5f9;
-            border-radius: 25px;
-            padding: 24px;
-            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             gap: 12px;
         }
 
-        .glass-btn:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
-            border-color: #0071e3;
+        .btn {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            border-radius: 20px;
+            padding: 22px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-full {
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.35s;
+            border-radius: inherit;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .btn:hover::before { opacity: 1; }
+
+        /* WhatsApp */
+        .btn-wa::before {
+            background: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(16,185,129,0.05));
+        }
+        .btn-wa:hover { box-shadow: 0 16px 40px rgba(34,197,94,0.15); }
+        .btn-wa i { color: #4ade80; }
+
+        /* Instagram */
+        .btn-ig {
             grid-column: span 2;
             flex-direction: row;
             justify-content: center;
-            background: #000000; /* Qara düymə çox havalı durur */
-            color: #fff;
-            border: none;
+            gap: 14px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(124,58,237,0.12));
+            border-color: rgba(236,72,153,0.2);
         }
 
-        .btn-full i { color: #fff !important; }
+        .btn-ig::before {
+            background: linear-gradient(135deg, rgba(236,72,153,0.18), rgba(124,58,237,0.15));
+        }
 
-        .footer-tag {
-            margin-top: 60px;
-            font-size: 8px;
-            font-weight: 800;
-            letter-spacing: 5px;
-            color: #cbd5e1;
+        .btn-ig:hover {
+            box-shadow: 0 16px 40px rgba(236,72,153,0.2);
+            border-color: rgba(236,72,153,0.35);
+        }
+
+        .btn-ig i {
+            background: linear-gradient(135deg, #f472b6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Email */
+        .btn-email {
+            grid-column: span 2;
+            flex-direction: row;
+            justify-content: center;
+            gap: 14px;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(6,182,212,0.12), rgba(59,130,246,0.1));
+            border-color: rgba(6,182,212,0.2);
+        }
+
+        .btn-email::before {
+            background: linear-gradient(135deg, rgba(6,182,212,0.18), rgba(59,130,246,0.14));
+        }
+
+        .btn-email:hover {
+            box-shadow: 0 16px 40px rgba(6,182,212,0.2);
+            border-color: rgba(6,182,212,0.35);
+        }
+
+        .btn-email i { color: #22d3ee; }
+
+        .btn-label {
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(248,250,252,0.5);
+        }
+
+        .btn-ig .btn-label,
+        .btn-email .btn-label {
+            letter-spacing: 3.5px;
+            font-size: 9.5px;
+        }
+
+        .btn i { font-size: 22px; }
+        .btn-ig i, .btn-email i { font-size: 18px; }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 44px;
+            font-size: 7.5px;
+            font-weight: 500;
+            letter-spacing: 4.5px;
+            color: rgba(248,250,252,0.18);
             text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <div class="premium-card animate__animated animate__zoomIn">
-        
-        <div class="brand-container">
+    <div class="card">
+
+        <div class="brand">
             <h1 class="brand-name">ZEOSK</h1>
-            <p class="brand-sub">SOFTWARE ECOSYSTEM</p>
+            <p class="brand-sub">Software Ecosystem</p>
         </div>
 
-        <div class="grid-layout">
-            
-            <a href="tel:+994709060986" class="glass-btn">
-                <i class="fa-solid fa-phone text-blue-600 text-2xl"></i>
-                <span class="text-[9px] font-bold uppercase tracking-widest opacity-40">Call</span>
+        <div class="grid">
+
+            <a href="https://wa.me/994709060986" class="btn btn-wa">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span class="btn-label">WhatsApp</span>
             </a>
 
-            <a href="https://wa.me/994709060986" class="glass-btn">
-                <i class="fa-brands fa-whatsapp text-emerald-500 text-2xl"></i>
-                <span class="text-[9px] font-bold uppercase tracking-widest opacity-40">WhatsApp</span>
+            <a href="https://instagram.com/_zeosk_" class="btn btn-ig">
+                <i class="fa-brands fa-instagram"></i>
+                <span class="btn-label">Instagram</span>
             </a>
 
-            <a href="https://instagram.com/_zeosk_" class="glass-btn btn-full py-5">
-                <i class="fa-brands fa-instagram text-pink-500 text-xl"></i>
-                <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Instagram</span>
-            </a>
-
-            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="glass-btn btn-full bg-slate-900 text-white">
-                <i class="fa-solid fa-envelope text-lg"></i>
-                <span class="text-[10px] font-bold uppercase tracking-[0.3em]">Send Email</span>
+            <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn btn-email">
+                <i class="fa-solid fa-envelope"></i>
+                <span class="btn-label">Send Email</span>
             </a>
 
         </div>
 
-        <div class="footer-tag">DIGITAL BUSINESS CARD</div>
+        <div class="footer">Digital Business Card</div>
     </div>
 
 </body>
