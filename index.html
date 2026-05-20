@@ -105,16 +105,17 @@
 
         .brand-name {
             font-family: 'Syne', sans-serif;
-            font-size: 58px;
+            font-size: clamp(38px, 14vw, 58px);
             font-weight: 900;
-            letter-spacing: -5px;
-            line-height: 0.85;
+            letter-spacing: -2px;
+            line-height: 0.9;
             background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 14px;
             filter: drop-shadow(0 0 20px rgba(124,58,237,0.4));
+            white-space: nowrap;
         }
 
         .brand-sub {
@@ -128,8 +129,8 @@
 
         /* BUTTONS */
         .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
@@ -137,16 +138,18 @@
             background: var(--btn-bg);
             border: 1px solid var(--btn-border);
             border-radius: 20px;
-            padding: 22px 16px;
+            padding: 20px 24px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 14px;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
 
         .btn::before {
@@ -174,11 +177,6 @@
 
         /* Instagram */
         .btn-ig {
-            grid-column: span 2;
-            flex-direction: row;
-            justify-content: center;
-            gap: 14px;
-            padding: 20px;
             background: linear-gradient(135deg, rgba(236,72,153,0.12), rgba(124,58,237,0.12));
             border-color: rgba(236,72,153,0.2);
         }
@@ -201,11 +199,6 @@
 
         /* Email */
         .btn-email {
-            grid-column: span 2;
-            flex-direction: row;
-            justify-content: center;
-            gap: 14px;
-            padding: 20px;
             background: linear-gradient(135deg, rgba(6,182,212,0.12), rgba(59,130,246,0.1));
             border-color: rgba(6,182,212,0.2);
         }
@@ -222,21 +215,14 @@
         .btn-email i { color: #22d3ee; }
 
         .btn-label {
-            font-size: 9px;
+            font-size: 10px;
             font-weight: 500;
-            letter-spacing: 3px;
+            letter-spacing: 3.5px;
             text-transform: uppercase;
             color: rgba(248,250,252,0.5);
         }
 
-        .btn-ig .btn-label,
-        .btn-email .btn-label {
-            letter-spacing: 3.5px;
-            font-size: 9.5px;
-        }
-
-        .btn i { font-size: 22px; }
-        .btn-ig i, .btn-email i { font-size: 18px; }
+        .btn i { font-size: 20px; }
 
         /* FOOTER */
         .footer {
