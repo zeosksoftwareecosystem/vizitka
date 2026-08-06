@@ -85,24 +85,11 @@
         }
 
         .splash-logo {
-            width: 132px;
-            height: 132px;
-            border-radius: 34px;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
             animation: splashPop 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-            filter: drop-shadow(0 0 34px rgba(124,58,237,0.55));
-        }
-
-        .splash-name {
-            font-family: 'Syne', sans-serif;
-            font-size: 30px;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: splashFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+            filter: drop-shadow(0 0 40px rgba(124,58,237,0.55));
         }
 
         .splash-ring {
@@ -118,11 +105,6 @@
             0%   { opacity: 0; transform: scale(0.5) rotate(-8deg); }
             60%  { opacity: 1; transform: scale(1.06) rotate(1deg); }
             100% { opacity: 1; transform: scale(1) rotate(0deg); }
-        }
-
-        @keyframes splashFade {
-            from { opacity: 0; transform: translateY(14px); }
-            to   { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes ringPulse {
@@ -173,36 +155,10 @@
         }
 
         .brand-logo {
-            width: 116px;
-            height: 116px;
-            border-radius: 30px;
+            width: 220px;
+            height: 220px;
             object-fit: cover;
-            margin-bottom: 22px;
-            filter: drop-shadow(0 0 28px rgba(124,58,237,0.5));
-        }
-
-        .brand-name {
-            font-family: 'Syne', sans-serif;
-            font-size: clamp(34px, 13vw, 52px);
-            font-weight: 900;
-            letter-spacing: -1px;
-            line-height: 0.95;
-            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 14px;
-            filter: drop-shadow(0 0 20px rgba(124,58,237,0.4));
-            white-space: nowrap;
-        }
-
-        .brand-sub {
-            font-size: 8px;
-            font-weight: 500;
-            letter-spacing: 5.5px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            padding-left: 5.5px;
+            filter: drop-shadow(0 0 36px rgba(124,58,237,0.55));
         }
 
         /* BUTTONS */
@@ -361,15 +317,12 @@
     <div class="splash" id="splash">
         <div class="splash-ring"></div>
         <img class="splash-logo" src="zeosk-logo.png" alt="ZEOSK">
-        <div class="splash-name">ZEOSK</div>
     </div>
 
     <div class="card" id="card">
 
         <div class="brand">
             <img class="brand-logo" src="zeosk-logo.png" alt="ZEOSK Logo">
-            <h1 class="brand-name">ZEOSK</h1>
-            <p class="brand-sub">Software Ecosystem</p>
         </div>
 
         <div class="grid">
