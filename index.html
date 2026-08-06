@@ -21,7 +21,6 @@
             --card-border: rgba(255,255,255,0.07);
             --accent-1: #7c3aed;   /* vivid violet */
             --accent-2: #06b6d4;   /* cyan */
-            --accent-3: #f59e0b;   /* amber */
             --text-primary: #f8fafc;
             --text-muted: rgba(248,250,252,0.35);
             --btn-bg: rgba(255,255,255,0.05);
@@ -64,6 +63,74 @@
             z-index: 0;
         }
 
+        /* ============ SPLASH ============ */
+        .splash {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            opacity: 1;
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.7s;
+        }
+
+        .splash.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .splash-logo {
+            width: 132px;
+            height: 132px;
+            border-radius: 34px;
+            object-fit: cover;
+            animation: splashPop 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+            filter: drop-shadow(0 0 34px rgba(124,58,237,0.55));
+        }
+
+        .splash-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 30px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: splashFade 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        .splash-ring {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 1px solid rgba(124,58,237,0.25);
+            animation: ringPulse 1.6s ease-out infinite;
+        }
+
+        @keyframes splashPop {
+            0%   { opacity: 0; transform: scale(0.5) rotate(-8deg); }
+            60%  { opacity: 1; transform: scale(1.06) rotate(1deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes splashFade {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes ringPulse {
+            0%   { transform: scale(0.75); opacity: 1; }
+            100% { transform: scale(1.15); opacity: 0; }
+        }
+
+        /* ============ CARD ============ */
         .card {
             position: relative;
             z-index: 1;
@@ -78,12 +145,14 @@
                 0 0 0 1px rgba(255,255,255,0.03),
                 0 60px 120px -30px rgba(0,0,0,0.6),
                 inset 0 1px 0 rgba(255,255,255,0.06);
-            animation: cardIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        @keyframes cardIn {
-            from { opacity: 0; transform: translateY(30px) scale(0.96); }
-            to   { opacity: 1; transform: translateY(0) scale(1); }
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
         }
 
         /* Top accent line */
@@ -103,12 +172,21 @@
             margin-bottom: 48px;
         }
 
+        .brand-logo {
+            width: 116px;
+            height: 116px;
+            border-radius: 30px;
+            object-fit: cover;
+            margin-bottom: 22px;
+            filter: drop-shadow(0 0 28px rgba(124,58,237,0.5));
+        }
+
         .brand-name {
             font-family: 'Syne', sans-serif;
-            font-size: clamp(38px, 14vw, 58px);
+            font-size: clamp(34px, 13vw, 52px);
             font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 0.9;
+            letter-spacing: -1px;
+            line-height: 0.95;
             background: linear-gradient(135deg, #f8fafc 0%, #cbd5e1 60%, #7c3aed 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -197,6 +275,40 @@
             background-clip: text;
         }
 
+        /* Website */
+        .btn-web {
+            background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(99,102,241,0.1));
+            border-color: rgba(124,58,237,0.2);
+        }
+
+        .btn-web::before {
+            background: linear-gradient(135deg, rgba(124,58,237,0.18), rgba(99,102,241,0.14));
+        }
+
+        .btn-web:hover {
+            box-shadow: 0 16px 40px rgba(124,58,237,0.2);
+            border-color: rgba(124,58,237,0.35);
+        }
+
+        .btn-web i { color: #a78bfa; }
+
+        /* Guest */
+        .btn-guest {
+            background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(217,119,6,0.08));
+            border-color: rgba(245,158,11,0.2);
+        }
+
+        .btn-guest::before {
+            background: linear-gradient(135deg, rgba(245,158,11,0.18), rgba(217,119,6,0.14));
+        }
+
+        .btn-guest:hover {
+            box-shadow: 0 16px 40px rgba(245,158,11,0.2);
+            border-color: rgba(245,158,11,0.35);
+        }
+
+        .btn-guest i { color: #fbbf24; }
+
         /* Email */
         .btn-email {
             background: linear-gradient(135deg, rgba(6,182,212,0.12), rgba(59,130,246,0.1));
@@ -237,9 +349,17 @@
 </head>
 <body>
 
-    <div class="card">
+    <!-- SPLASH -->
+    <div class="splash" id="splash">
+        <div class="splash-ring"></div>
+        <img class="splash-logo" src="zeosk-logo.png" alt="ZEOSK">
+        <div class="splash-name">ZEOSK</div>
+    </div>
+
+    <div class="card" id="card">
 
         <div class="brand">
+            <img class="brand-logo" src="zeosk-logo.png" alt="ZEOSK Logo">
             <h1 class="brand-name">ZEOSK</h1>
             <p class="brand-sub">Software Ecosystem</p>
         </div>
@@ -256,6 +376,16 @@
                 <span class="btn-label">Instagram</span>
             </a>
 
+            <a href="https://zeoskse.com" class="btn btn-web">
+                <i class="fa-solid fa-globe"></i>
+                <span class="btn-label">Zeosk Web</span>
+            </a>
+
+            <a href="https://guest.zeoskse.com" class="btn btn-guest">
+                <i class="fa-solid fa-user-astronaut"></i>
+                <span class="btn-label">ZeoskGuest</span>
+            </a>
+
             <a href="mailto:zeosksoftwareecosystem@gmail.com" class="btn btn-email">
                 <i class="fa-solid fa-envelope"></i>
                 <span class="btn-label">Send Email</span>
@@ -265,6 +395,17 @@
 
         <div class="footer">Digital Business Card</div>
     </div>
+
+    <script>
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                var splash = document.getElementById('splash');
+                var card = document.getElementById('card');
+                splash.classList.add('hide');
+                card.classList.add('visible');
+            }, 1900);
+        });
+    </script>
 
 </body>
 </html>
